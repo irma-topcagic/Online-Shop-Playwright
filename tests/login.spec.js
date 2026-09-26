@@ -8,6 +8,7 @@ const invalidLogins = [
 ];
 
 test.describe('Login Tests', () => {
+    test.use({ storageState: { cookies: [], origins: [] } });
     let loginPage;
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
