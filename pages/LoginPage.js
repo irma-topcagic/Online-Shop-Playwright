@@ -8,6 +8,10 @@ export class LoginPage{
         this.errorCloseButton = page.getByTestId('error-button');
     }
 
+    async goto() {
+  await this.page.goto('/');
+}
+
     async enterUsername(username) {
   await this.usernameInput.fill(username);
 }
