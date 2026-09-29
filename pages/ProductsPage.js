@@ -3,7 +3,7 @@ import { CartPage } from './CartPage';
 export class ProductsPage{
     constructor(page){
         this.page=page;
-        this.header=page.getByTestIf('title');
+        this.header=page.getByTestId('title');
         this.sortDropdown = page.getByTestId('product-sort-container');
         this.productNames = page.getByTestId('inventory-item-name');
         this.productPrices = page.getByTestId('inventory-item-price');
