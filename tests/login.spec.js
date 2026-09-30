@@ -16,19 +16,19 @@ test.describe('Login Tests', () => {
 
     });
 
-    test('successful Login', async ({ page }) => {
+    test('should login successfully', { tag:'@smoke' },async ({ page }) => {
         await loginPage.login('standard_user', 'secret_sauce');
         await expect(page).toHaveURL(/inventory\.html/);
     });
 
     for (const data of invalidLogins) {
-        test(`login with ${data.title}`, async () => {
+        test(`should show error with ${data.title}`, async () => {
             await loginPage.login(data.username, data.password);
             await expect(loginPage.errorMessage).toHaveText(data.error);
         });
     }
 
-    test('login with locked out user', async ({ page }) => {
+    test('should not login locked out user', async ({ page }) => {
         await loginPage.login('locked_out_user', 'secret_sauce');
         await expect.soft(loginPage.errorMessage).toHaveText('Epic sadface: Sorry, this user has been locked out.');
         await expect.soft(page).not.toHaveURL(/inventory/);

@@ -12,12 +12,12 @@ test.describe('Products Page',()=>{
         await expect(productsPage.header).toHaveText('Products');
     });
 
-    test('add single product to cart', async()=>{
+    test('should add single product to cart', {tag:'@smoke'},async()=>{
         await productsPage.addProductToCart('Sauce Labs Backpack');
         await expect(productsPage.cartBadge).toHaveText('1');
     });
 
-    test('add products to cart', async()=>{
+    test('should add products to cart', {tag:'@smoke'},async()=>{
         await productsPage.addProductToCart('Sauce Labs Backpack');
         await productsPage.addProductToCart('Sauce Labs Bike Light');
         await productsPage.addProductToCart('Sauce Labs Onesie');
@@ -28,7 +28,7 @@ test.describe('Products Page',()=>{
         await expect(productsPage.cartBadge).toHaveCount(0);
     });
 
-    test('remove product from cart',async()=>{
+    test('should remove product from cart',async()=>{
         await productsPage.addProductToCart('Sauce Labs Backpack');
         await expect(productsPage.cartBadge).toHaveText('1');
         await productsPage.removeProductFromCart('Sauce Labs Backpack');

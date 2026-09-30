@@ -15,7 +15,7 @@ test.describe('Checkout Complete Page', () => {
     completePage = await overviewPage.finish();
   });
 
-  test('should display order confirmation', async () => {
+  test('should display order confirmation', { tag: '@smoke' }, async () => {
     await expect(completePage.header).toHaveText('Checkout: Complete!');
     await expect(completePage.completeHeader).toHaveText('Thank you for your order!');
     await expect(completePage.completeText).toBeVisible();
