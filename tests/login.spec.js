@@ -16,7 +16,7 @@ test.describe('Login Tests', () => {
 
     });
 
-    test('should login successfully', { tag:'@smoke' },async ({ page }) => {
+    test('should login successfully', { tag: '@smoke' }, async ({ page }) => {
         await loginPage.login('standard_user', 'secret_sauce');
         await expect(page).toHaveURL(/inventory\.html/);
     });

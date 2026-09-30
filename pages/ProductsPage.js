@@ -1,25 +1,25 @@
 import { CartPage } from './CartPage';
 
-export class ProductsPage{
-    constructor(page){
-        this.page=page;
-        this.header=page.getByTestId('title');
-        this.sortDropdown = page.getByTestId('product-sort-container');
-        this.productNames = page.getByTestId('inventory-item-name');
-        this.productPrices = page.getByTestId('inventory-item-price');
-        this.cartIcon = page.getByTestId('shopping-cart-link');
-        this.cartBadge = page.getByTestId('shopping-cart-badge');
-    }
+export class ProductsPage {
+  constructor(page) {
+    this.page = page;
+    this.header = page.getByTestId('title');
+    this.sortDropdown = page.getByTestId('product-sort-container');
+    this.productNames = page.getByTestId('inventory-item-name');
+    this.productPrices = page.getByTestId('inventory-item-price');
+    this.cartIcon = page.getByTestId('shopping-cart-link');
+    this.cartBadge = page.getByTestId('shopping-cart-badge');
+  }
 
-    async goto(){
-        await this.page.goto('/inventory.html');
-    }
+  async goto() {
+    await this.page.goto('/inventory.html');
+  }
 
-    async sort(value){
-        await this.sortDropdown.selectOption(value);
-    }
+  async sort(value) {
+    await this.sortDropdown.selectOption(value);
+  }
 
-    async getProductNames() {
+  async getProductNames() {
     await this.productNames.first().waitFor();
     return await this.productNames.allTextContents();
   }

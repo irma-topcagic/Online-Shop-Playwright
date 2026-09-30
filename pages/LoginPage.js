@@ -1,40 +1,36 @@
-export class LoginPage{
-    constructor(page){
-        this.page=page;
-        this.usernameInput=page.getByTestId('username');
-        this.passwordInput=page.getByTestId('password');
-        this.loginButton=page.getByTestId('login-button');
+export class LoginPage {
+    constructor(page) {
+        this.page = page;
+        this.usernameInput = page.getByTestId('username');
+        this.passwordInput = page.getByTestId('password');
+        this.loginButton = page.getByTestId('login-button');
         this.errorMessage = page.getByTestId('error');
         this.errorCloseButton = page.getByTestId('error-button');
     }
 
     async goto() {
-  await this.page.goto('/');
-}
+        await this.page.goto('/');
+    }
 
     async enterUsername(username) {
-  await this.usernameInput.fill(username);
-}
+        await this.usernameInput.fill(username);
+    }
 
-async enterPassword(password){
-    await this.passwordInput.fill(password);
-}
+    async enterPassword(password) {
+        await this.passwordInput.fill(password);
+    }
 
-async clickLoginButton(){
-    await this.loginButton.click();
-}
+    async clickLoginButton() {
+        await this.loginButton.click();
+    }
 
-async login(username,password){
-    await this.enterUsername(username);
-    await this.enterPassword(password);
-    await this.clickLoginButton();
-}
+    async login(username, password) {
+        await this.enterUsername(username);
+        await this.enterPassword(password);
+        await this.clickLoginButton();
+    }
 
-async getErrorMessageText() {
-    return await this.errorMessage.textContent();
-
-}
-async closeErrorMessage(){
-    await this.errorCloseButton.click();
-}
+    async closeErrorMessage() {
+        await this.errorCloseButton.click();
+    }
 }
